@@ -1,0 +1,80 @@
+# \ backslash to escape special chars in strings
+# \n within single quotes does nothing
+
+# \n newline # \r return # \t tab # \b backspace 
+# \I lowercase next letter # \L lowercase letters until \E
+# \u UPPERCASE next letter # \U upper all
+# \Q quote nonword characters by adding backslash until \E
+
+STRING OPERATORS p24
+
+"hello" . "world" # same as "helloworld"
+"hello" . ' ' . "world" # same as 'hello world'  (hello + + world)
+'hello world' . "\n" # same as "hello world\n"
+
+"12fred34" * "3" # =36! trailing nonnumber stuff doesnt matter
+
+$VAR is a 'scalar variable' with a leading 'sigil'
+
+$fred = 17; 		#give $fred the value of 17
+$barney = 'hello';	#give $barney the string 'hello'
+$barney = $fred +3; 	#give $barney val fred + 3 (20)
+
+Binary assignment operators p28
+
+$fred = $fred + 5; 	#wo BAO
+$fred += 5;		#with BAO
+
+When a string literal is double-quoted(DQd) it is subject to variable interpolation
+
+$barney = "fred ate a $meal";    # $barney is now "fred ate a brontosaurus steak"
+$barney = 'fred ate a ' . $meal; # another way to write that
+
+print "$fred" 	#wo anything else, creates an undefined variable warning
+
+ASSOCIATIVITY p31
+
+4 ** 3 ** 2 # 4 ** (3 ** 2), or 4 ** 9 (right associative)
+72 / 12 / 3 # (72 / 12) / 3, or 6/3, or 2 (left associative)
+36 / 6 * 3 # (36/6)*3, or 1
+
+if CONTROL STRUCTURE
+
+if ($name gt 'fred') {
+print "'$name' comes after 'fred' in sorted order.\n";
+} else {
+print "'$name' does not come after 'fred'.\n";
+print "Maybe it's the same string, in fact.\n";
+}
+
+GETTING USER INPUT
+
+$line = <STDIN>;
+if ($line eq "\n") {
+print "That was just a blank line!\n";
+} else {
+print "That line of input was: $line";
+}
+
+chomp GETS RID OF THE NEWLINE CHAR IN STRINGS
+
+text = "a line of text\n"; # Or the same thing from <STDIN>
+chomp($text); # Gets rid of the newline character
+
+while CONTROL STRUCTURE
+
+$count = 0;
+while ($count < 10) {
+$count += 2;
+print "count is now $count\n"; # Gives values 2 4 6 8 10
+}
+
+
+
+
+
+
+
+
+
+
