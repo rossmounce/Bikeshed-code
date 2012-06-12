@@ -38,7 +38,7 @@ function lsd {
 # List only files:
 function lsf {
     lister $1 | egrep -v '^d'
-
+}
 # example usage: pdfpextr 22 36 inputfile.pdf
 # from: http://www.linuxjournal.com/content/tech-tip-extract-pages-pdf
 
