@@ -1,0 +1,90 @@
+# Create symlinks to binaries in Dropbox so one can call programs from any directory in shell
+# script kept so when I reformat a computer, I can just replay these symlinks if path/user=ross
+
+cd /usr/bin
+
+### Basic
+sudo ln -s /home/ross/Dropbox/Programs/Chipmunk_Basic/basic basic
+
+### PAUP
+sudo ln -s /home/ross/Dropbox/Programs/PAUP/paup4b10-x86-linux/paup paup
+
+### TNT 64-bit no taxon limit (pvm libs must be installed), $PVM_ROOT=/home/ross
+sudo ln -s /home/ross/tntpvm tntpvm
+
+
+### aliases
+
+nano ~/.bash_aliases
+
+### add-in these custom aliases
+
+# SyncUThink
+alias syncu='cd /home/ross/Dropbox/Programs/syncuthink && java -cp lib/JSAP-2.1.jar:lib/commons-codec-1.3.jar:lib/commons-httpclient-3.1.jar:lib/commons-lang-2.3.jar:lib/commons-logging-1.1.1.jar:lib/cookiemonster.jar:lib/core.jar:lib/syncuthink.jar processing.core.PApplet org.andrewberman.sync.SyncUThink'
+
+# example usage: pdfpextr 22 36 inputfile.pdf
+# from: http://www.linuxjournal.com/content/tech-tip-extract-pages-pdf
+
+function pdfpextr()
+{
+    # this function uses 3 arguments:
+    #     $1 is the first page of the range to extract
+    #     $2 is the last page of the range to extract
+    #     $3 is the input file
+    #     output file will be named "inputfile_pXX-pYY.pdf"
+    gs -sDEVICE=pdfwrite -dNOPAUSE -dBATCH -dSAFER \
+       -dFirstPage=${1} \
+       -dLastPage=${2} \
+       -sOutputFile=${3%.pdf}_p${1}-p${2}.pdf \
+       ${3}
+}
+
+# A shortcut function that simplifies usage of xclip.
+# - Accepts input from either stdin (pipe), or params.
+# ------------------------------------------------
+cb() {
+  local _scs_col="\e[0;32m"; local _wrn_col='\e[1;31m'; local _trn_col='\e[0;33m'
+  # Check that xclip is installed.
+  if ! type xclip > /dev/null 2>&1; then
+    echo -e "$_wrn_col""You must have the 'xclip' program installed.\e[0m"
+  # Check user is not root (root doesn't have access to user xorg server)
+  elif [[ "$USER" == "root" ]]; then
+    echo -e "$_wrn_col""Must be regular user (not root) to copy a file to the clipboard.\e[0m"
+  else
+    # If no tty, data should be available on stdin
+    if ! [[ "$( tty )" == /dev/* ]]; then
+      input="$(< /dev/stdin)"
+    # Else, fetch input from params
+    else
+      input="$*"
+    fi
+    if [ -z "$input" ]; then  # If no input, print usage message.
+      echo "Copies a string to the clipboard."
+      echo "Usage: cb <string>"
+      echo "       echo <string> | cb"
+    else
+      # Copy input to clipboard
+      echo -n "$input" | xclip -selection c
+      # Truncate text for status
+      if [ ${#input} -gt 80 ]; then input="$(echo $input | cut -c1-80)$_trn_col...\e[0m"; fi
+      # Print status.
+      echo -e "$_scs_col""Copied to clipboard:\e[0m $input"
+    fi
+  fi
+}
+# Aliases / functions leveraging the cb() function
+# ------------------------------------------------
+# Copy contents of a file
+function cbf() { cat "$1" | cb; }  
+# Copy SSH public key
+alias cbssh="cb ~/.ssh/id_rsa.pub"  
+# Copy current working directory
+alias cbwd="pwd | cb"  
+# Copy most recent command in bash history
+alias cbhs="cat $HISTFILE | tail -n 1 | cb"
+
+# then write out, exit nano, then refresh bashrc
+
+source ~/.bashrc
+
+
