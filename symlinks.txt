@@ -31,6 +31,14 @@ function findemails {
     findallemails $1 | sort | uniq
 }
 
+# List only directories:
+function lsd {
+    lister $1 | egrep '^d'
+}
+# List only files:
+function lsf {
+    lister $1 | egrep -v '^d'
+
 # example usage: pdfpextr 22 36 inputfile.pdf
 # from: http://www.linuxjournal.com/content/tech-tip-extract-pages-pdf
 
