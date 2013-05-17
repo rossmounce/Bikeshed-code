@@ -69,7 +69,8 @@ $count += 2;
 print "count is now $count\n"; # Gives values 2 4 6 8 10
 }
 
-
+#recursive find & mv all PDFs above 100k to target directory
+sudo find . -size +100k -name '*.pdf' -exec mv -t /home/ross/Documents/pdfs {} \+ ;
 
 
 
