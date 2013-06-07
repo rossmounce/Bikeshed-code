@@ -3,3 +3,16 @@ rsync -avh --progress /folder/directory/file.mp4 /new/folder/file.mp4
 
 #scp directory recursive
 scp -r /path/  user@computer:/path-to-copy-to/
+
+#count number of character X in file
+fgrep -o X file.txt | wc -l
+
+#Delete before abc
+sed 's/^.*abc/abc/'
+
+# print section of file between two regular expressions (inclusive)
+ sed -n '/Iowa/,/Montana/p'             # case sensitive
+ 
+#in context of TNT log files
+sed -n '/Consistency index/,/Retention index/p'
+sed -n '/Retention index/,/Again/p'
