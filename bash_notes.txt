@@ -16,3 +16,9 @@ sed 's/^.*abc/abc/'
 #in context of TNT log files
 sed -n '/Consistency index/,/Retention index/p'
 sed -n '/Retention index/,/Again/p'
+
+#extracts length L from TNT log files
+grep 'Best score: ' batch2.log | cut -d ' ' -f 3  | sed  's/\.//g'
+
+#extract ILD p-values from multiple logfiles, alphabetically-ordered
+grep 'P value' *.log | awk '{ print substr( $0, length($0) - 8, length($0) ) }'
