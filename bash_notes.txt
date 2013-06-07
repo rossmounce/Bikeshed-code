@@ -22,3 +22,7 @@ grep 'Best score: ' batch2.log | cut -d ' ' -f 3  | sed  's/\.//g'
 
 #extract ILD p-values from multiple logfiles, alphabetically-ordered
 grep 'P value' *.log | awk '{ print substr( $0, length($0) - 8, length($0) ) }'
+
+#extract sum of lengths for original partitions
+sed -n '/tree lengths       replicates/,/sum of lengths for original partition/p' *.log | 
+grep '\*   ' | sed 's/*..*//g' > origl.txt
