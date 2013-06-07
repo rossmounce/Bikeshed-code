@@ -26,3 +26,6 @@ grep 'P value' *.log | awk '{ print substr( $0, length($0) - 8, length($0) ) }'
 #extract sum of lengths for original partitions
 sed -n '/tree lengths       replicates/,/sum of lengths for original partition/p' *.log | 
 grep '\*   ' | sed 's/*..*//g' > origl.txt
+
+#sum all numbers in file (useful for HER / MEANNS calculation from PTP log file)
+awk '{s+=$0} END {print s}'  file.log
