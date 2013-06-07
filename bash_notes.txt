@@ -5,7 +5,9 @@ rsync -avh --progress /folder/directory/file.mp4 /new/folder/file.mp4
 scp -r /path/  user@computer:/path-to-copy-to/
 
 #count number of character X in file
-fgrep -o X file.txt | wc -l
+fgrep -o X file.txt | wc -l            
+# same thing in awk 
+awk '{c+=gsub(s,s)}END{print c}' s='\?' file.txt
 
 #Delete before abc
 sed 's/^.*abc/abc/'
