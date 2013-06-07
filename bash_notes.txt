@@ -27,5 +27,8 @@ grep 'P value' *.log | awk '{ print substr( $0, length($0) - 8, length($0) ) }'
 sed -n '/tree lengths       replicates/,/sum of lengths for original partition/p' *.log | 
 grep '\*   ' | sed 's/*..*//g' > origl.txt
 
-#sum all numbers in file (useful for HER / MEANNS calculation from PTP log file)
+#sum all numbers in file
 awk '{s+=$0} END {print s}'  file.log
+
+#get MEANNS for HER from PTP log file
+grep 'Best score:' file.log |  cut -c 1-18 | awk -F: '{print $2}' | awk '{s+=$0} END {print s}'
