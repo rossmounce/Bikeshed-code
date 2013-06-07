@@ -1,0 +1,5 @@
+#rsync
+rsync -avh --progress /folder/directory/file.mp4 /new/folder/file.mp4
+
+#scp directory recursive
+scp -r /path/  user@computer:/path-to-copy-to/
