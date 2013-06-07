@@ -32,3 +32,6 @@ awk '{s+=$0} END {print s}'  file.log
 
 #get MEANNS for HER from PTP log file
 grep 'Best score:' file.log |  cut -c 1-18 | awk -F: '{print $2}' | awk '{s+=$0} END {print s}'
+
+#extract ONLY consensus tree results for IRD  
+awk '/2   /' 2allog | awk '/ -/' | cut -c 6-8 > distances.out
