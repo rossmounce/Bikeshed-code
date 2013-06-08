@@ -4,6 +4,9 @@ rsync -avh --progress /folder/directory/file.mp4 /new/folder/file.mp4
 #scp directory recursive
 scp -r /path/  user@computer:/path-to-copy-to/
 
+#Display last 5 modified files. Bottom is newest
+ls -Art | tail -n 5
+
 #count number of character X in file
 fgrep -o X file.txt | wc -l            
 # same thing in awk 
