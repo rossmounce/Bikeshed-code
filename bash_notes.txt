@@ -22,7 +22,7 @@ sed 's/^0*//'
 #Find & print missing numbers in sequence of consecutive numbers (need to be pre-sorted 1 2 3...)
 awk 'NR-1{if($1!=(_+1))print _}{_=$1}' file
 
-#Rename all matching files in folder
+#Rename all matching files in folder, use -o to overwrite existing files with that name
 mmv "*pdf.txt" "#1.txt" 
 
 #when uniq doesnt seem to be working as expected
