@@ -1,5 +1,6 @@
 #rsync
 rsync -avh --progress /folder/directory/file.mp4 /new/folder/file.mp4
+rsync -avz -e ssh remoteuser@remotehost:/remote/dir /this/dir/
 
 #scp directory recursive
 scp -r /path/  user@computer:/path-to-copy-to/
