@@ -15,6 +15,9 @@ awk '{c+=gsub(s,s)}END{print c}' s='\?' file.txt
 #Delete before abc
 sed 's/^.*abc/abc/'
 
+#Rename all matching files in folder
+mmv "*pdf.txt" "#1.txt" 
+
 # print section of file between two regular expressions (inclusive)
  sed -n '/Iowa/,/Montana/p'             # case sensitive
  
