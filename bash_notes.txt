@@ -23,7 +23,7 @@ sed 's/^0*//'
 awk 'NR-1{if($1!=(_+1))print _}{_=$1}' file
 
 #Rename all matching files in folder, use -d to overwrite existing files with that name silently w/o permission!
-mmv "*pdf.txt" "#1.txt" 
+mmv "*.pdf.txt" "#1.txt" 
 
 #when uniq doesnt seem to be working as expected
 sort -u file.txt
