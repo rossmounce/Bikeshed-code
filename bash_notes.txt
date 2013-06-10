@@ -15,6 +15,9 @@ awk '{c+=gsub(s,s)}END{print c}' s='\?' file.txt
 #Delete before abc
 sed 's/^.*abc/abc/'
 
+#Remove leading zeroes
+sed 's/^0*//'
+
 #Rename all matching files in folder
 mmv "*pdf.txt" "#1.txt" 
 
