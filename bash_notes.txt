@@ -18,6 +18,9 @@ sed 's/^.*abc/abc/'
 #Remove leading zeroes
 sed 's/^0*//'
 
+#Find & print missing numbers in sequence of consecutive numbers (need to be pre-sorted 1 2 3...)
+awk 'NR-1{if($1!=(_+1))print _}{_=$1}' file
+
 #Rename all matching files in folder
 mmv "*pdf.txt" "#1.txt" 
 
