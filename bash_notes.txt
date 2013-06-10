@@ -18,6 +18,9 @@ sed 's/^.*abc/abc/'
 #Rename all matching files in folder
 mmv "*pdf.txt" "#1.txt" 
 
+#when uniq doesnt seem to be working as expected
+sort -u file.txt
+
 # print section of file between two regular expressions (inclusive)
  sed -n '/Iowa/,/Montana/p'             # case sensitive
  
