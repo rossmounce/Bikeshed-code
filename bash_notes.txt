@@ -28,6 +28,9 @@ mmv "*.pdf.txt" "#1.txt"
 #when uniq doesnt seem to be working as expected
 sort -u file.txt
 
+#recursive count number of files
+find . -type f -print | wc -l
+
 # print section of file between two regular expressions (inclusive)
  sed -n '/Iowa/,/Montana/p'             # case sensitive
  
