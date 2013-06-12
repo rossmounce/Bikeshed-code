@@ -5,6 +5,9 @@ rsync -avz -e ssh remoteuser@remotehost:/remote/dir /this/dir/
 #scp directory recursive
 scp -r /path/  user@computer:/path-to-copy-to/
 
+#check access log
+cat /var/log/auth.log | grep -i 'Accepted'
+
 #Display last 5 modified files. Bottom is newest
 ls -Art | tail -n 5
 
