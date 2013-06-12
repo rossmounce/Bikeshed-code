@@ -10,6 +10,9 @@ grep -i 'Accepted' /var/log/auth.log
 grep sshd.\*Failed /var/log/auth.log | less
 grep sshd.*Did /var/log/auth.log | less
 
+#connect
+ssh -L 12345:externalIP:80 user@internalIP
+
 #Display last 5 modified files. Bottom is newest
 ls -Art | tail -n 5
 
