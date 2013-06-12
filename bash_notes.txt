@@ -7,6 +7,8 @@ scp -r /path/  user@computer:/path-to-copy-to/
 
 #check access log
 grep -i 'Accepted' /var/log/auth.log
+grep sshd.\*Failed /var/log/auth.log | less
+grep sshd.*Did /var/log/auth.log | less
 
 #Display last 5 modified files. Bottom is newest
 ls -Art | tail -n 5
