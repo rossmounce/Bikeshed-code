@@ -11,7 +11,7 @@ grep sshd.\*Failed /var/log/auth.log | less
 grep sshd.*Did /var/log/auth.log | less
 
 #connect, get internal with ifconfig
-ssh -L 12345:externalIP:80 user@internalIP
+ssh -vv -L 12345:IP:80 -p <port> user@IP
 
 #Display last 5 modified files. Bottom is newest
 ls -Art | tail -n 5
