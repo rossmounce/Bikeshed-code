@@ -39,6 +39,9 @@ sort -u file.txt
 #recursive count number of files
 find . -type f -print | wc -l
 
+#ubuntu, list of most recently installed packages
+cat /var/log/dpkg.log | grep "\ install\ "
+
 # print section of file between two regular expressions (inclusive)
  sed -n '/Iowa/,/Montana/p'             # case sensitive
  
