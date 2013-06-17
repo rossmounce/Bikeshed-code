@@ -39,6 +39,9 @@ mmv "*.pdf.txt" "#1.txt"
 #when uniq doesnt seem to be working as expected
 sort -u file.txt
 
+#sort file by line length, longest line first
+awk '{ print length($0) " " $0; }' filename.txt | sort -r -n | cut -d ' ' -f 2-
+
 #recursive count number of files
 find . -type f -print | wc -l
 
