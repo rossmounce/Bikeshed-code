@@ -27,6 +27,9 @@ sed 's/^.*abc/abc/'
 #Remove leading zeroes
 sed 's/^0*//'
 
+# print only lines of 65 characters or longer http://www.pement.org/awk/awk1line.txt
+ awk 'length > 64'
+
 #Find & print missing numbers in sequence of consecutive numbers (need to be pre-sorted 1 2 3...)
 awk 'NR-1{if($1!=(_+1))print _}{_=$1}' file
 
