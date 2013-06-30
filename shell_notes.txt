@@ -33,6 +33,9 @@ sed 's/^0*//'
 #Find & print missing numbers in sequence of consecutive numbers (need to be pre-sorted 1 2 3...)
 awk 'NR-1{if($1!=(_+1))print _}{_=$1}' file
 
+#print word and number of its occurence in file for all words
+perl -0777 -lape's/\s+/\n/g' FILENAME | sort | uniq -c | sort -nr
+
 #Rename all matching files in folder, use -d to overwrite existing files with that name silently w/o permission!
 mmv "*.pdf.txt" "#1.txt" 
 
