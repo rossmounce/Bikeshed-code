@@ -64,8 +64,8 @@ cat /var/log/dpkg.log | grep "\ install\ "
 #in context of TNT log files
 sed -n '/Consistency index/,/Retention index/p'
 sed -n '/Retention index/,/Again/p'
-#EVEN BETTER, assuming multiple all in one logfile
-awk '/Consistency/ { show[NR+4]++  } show[NR]' CIs.log
+#EVEN BETTER, assuming multiple all in one logfile - gives CIs
+awk '/Consistency/ { show[NR+4]++  } show[NR]' CIs.log | awk '{print $2}'
 
 #extracts length L from TNT log files
 grep 'Best score: ' batch2.log | cut -d ' ' -f 3  | sed  's/\.//g'
