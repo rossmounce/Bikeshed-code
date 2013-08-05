@@ -44,6 +44,7 @@ mmv "*.pdf.txt" "#1.txt"
 sort -u file.txt
 
 #get the average of column8 across hundreds of csvs assuming 1 header row
+sed '/^1,/,$d'
 (ls *.csv | while read filename ; do awk '{sum+=$8} END { print "Average for " FILENAME " = ",sum/(NR-1)}' $filename ; done)
 
 #get chars n taxa
