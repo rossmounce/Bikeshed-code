@@ -91,3 +91,6 @@ grep 'Best score:' file.log |  cut -c 1-18 | awk -F: '{print $2}' | awk '{s+=$0}
 
 #extract ONLY consensus tree results for IRD  
 awk '/2   /' 2allog | awk '/ -/' | cut -c 6-8 > distances.out
+
+#chop to separate URLs APP
+tr "\"" "\n" < 2pdf.txt > out.txt
