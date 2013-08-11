@@ -94,3 +94,6 @@ awk '/2   /' 2allog | awk '/ -/' | cut -c 6-8 > distances.out
 
 #chop to separate URLs APP
 tr "\"" "\n" < 2pdf.txt > out.txt
+
+#useful for citeulike RTF export, gets rid of [Smith2008] before each citation
+sed -i 's/\[.*]//g' rm.rtf
