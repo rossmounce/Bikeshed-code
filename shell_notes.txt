@@ -86,6 +86,9 @@ grep '\*   ' | sed 's/*..*//g' > origl.txt
 #sum all numbers in file
 awk '{s+=$0} END {print s}'  file.log
 
+#useful for converting from TNT (from 0) to PAUP (from 1) numbering
+perl -pe 's/\d+/$& > -1 ? $&+1 : $&/ge'
+
 #get MEANNS for HER from PTP log file
 grep 'Best score:' file.log |  cut -c 1-18 | awk -F: '{print $2}' | awk '{s+=$0} END {print s}'
 
