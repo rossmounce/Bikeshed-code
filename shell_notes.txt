@@ -100,3 +100,8 @@ tr "\"" "\n" < 2pdf.txt > out.txt
 
 #useful for citeulike RTF export, gets rid of [Smith2008] before each citation
 sed -i 's/\[.*]//g' rm.rtf
+
+#recursively change file extensions from .so to .dylib
+find -L . -type f -name "*.so" -print0 | while IFS= read -r -d '' FNAME; do
+    mv -- "$FNAME" "${FNAME%.so}.dylib"
+done
