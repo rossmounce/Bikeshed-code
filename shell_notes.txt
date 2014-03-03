@@ -44,6 +44,7 @@ find /path/to/source -type d | cpio -pd /path/to/dest/
 cat phylog.tzt | xargs -n1 -t -i cp -R {} ../phylog/{}
 
 #delete empty subfolders
+find . -empty -type d -delete
 
 #Rename all matching files in folder, use -d to overwrite existing files with that name silently w/o permission!
 mmv "*.pdf.txt" "#1.txt" 
