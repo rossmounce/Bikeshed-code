@@ -40,7 +40,11 @@ cat FILENAME | sed s/' '/\\n/g | sort | uniq -c | sort -nr
 #copy subfolders WITHOUT copying the associated files within them
 find /path/to/source -type d | cpio -pd /path/to/dest/
 
-#copy a list of files from X to Y
+#copy a list of files from X to Y after cpio'ing the directories
+cat phylog.tzt | xargs -n1 -t -i cp -R {} ../phylog/{}
+
+#delete empty subfolders
+
 #Rename all matching files in folder, use -d to overwrite existing files with that name silently w/o permission!
 mmv "*.pdf.txt" "#1.txt" 
 
