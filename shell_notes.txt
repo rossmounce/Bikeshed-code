@@ -37,6 +37,10 @@ awk 'NR-1{if($1!=(_+1))print _}{_=$1}' file
 perl -0777 -lape's/\s+/\n/g' FILENAME | sort | uniq -c | sort -nr
 cat FILENAME | sed s/' '/\\n/g | sort | uniq -c | sort -nr
 
+#copy subfolders WITHOUT copying the associated files within them
+find /path/to/source -type d | cpio -pd /path/to/dest/
+
+#copy a list of files from X to Y
 #Rename all matching files in folder, use -d to overwrite existing files with that name silently w/o permission!
 mmv "*.pdf.txt" "#1.txt" 
 
