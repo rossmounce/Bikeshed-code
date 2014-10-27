@@ -2,6 +2,9 @@
 rsync -avh --progress /folder/directory/file.mp4 /new/folder/file.mp4
 rsync -avz -e ssh remoteuser@remotehost:/remote/dir /this/dir/
 
+#which folders do not contain FILE
+find . -type d | while read line; do if [ ! -f $line/folder.jpg ]; then echo $line; fi; done; >> no_album_art
+
 #scp directory recursive
 scp -r /path/  user@computer:/path-to-copy-to/
 
